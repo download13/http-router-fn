@@ -47,36 +47,6 @@ describe('createRouter', function() {
 			done();
 		}, 100);
 	});
-	
-	it('should parse the url into a path', function(done) {
-		router.get('/2', function(req, res) {
-			assert.equal(req.path, '/2');
-
-			done();
-		});
-
-		get(router, '/2');
-	});
-
-	it('should parse the url into a query', function() {
-		router.get('/3', function(req, res) {
-			assert.deepEqual(req.query, {test: 42});
-
-			done();
-		});
-
-		get(router, '/3?test=42');
-	});
-
-	it('should have query object even if there was no query string', function(done) {
-		router.get('/4', function(req, res) {
-			assert.deepEqual(req.query, {});
-
-			done();
-		});
-
-		get(router, '/4');
-	});
 
 	it('should put params on a request with a matching regex', function(done) {
 		router.get(/\/5\/([a-z]+)/, function(req, res) {

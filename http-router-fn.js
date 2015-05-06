@@ -1,5 +1,3 @@
-var mwUrl = require('mw-parse-url');
-
 var mw = require('mw-compose');
 
 var createRoute = require('./routes');
@@ -51,8 +49,6 @@ function request(method, matcher) {
 
 // Dispatches a request to be handled by the router
 function dispatch(req, res, next) {
-	mwUrl(req, res); // Get req.path and req.query ready
-
 	var method = req.method.toUpperCase();
 
 	var routes = this._routes[method] || [];
